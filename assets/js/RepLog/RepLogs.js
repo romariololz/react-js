@@ -2,6 +2,16 @@ import React from 'react';
 import RepLogList from './RepLogList';
 import PropTypes from 'prop-types';
 
+function calculateTotalWeightLifted(repLogs) {
+    let total = 0;
+
+    for (let repLog of repLogs) {
+        total += repLog.totalWeightLifted;
+    }
+
+    return total;
+}
+
 export default function RepLogs(props) {
     const { withHeart, highlightedRowId, onRowClick, repLogs } = props;
     let heart = '';
@@ -31,7 +41,7 @@ export default function RepLogs(props) {
                 <tr>
                     <td>&nbsp;</td>
                     <th>Total</th>
-                    <th>TODO</th>
+                    <th>{calculateTotalWeightLifted(repLogs)}</th>
                     <td>&nbsp;</td>
                 </tr>
                 </tfoot>
