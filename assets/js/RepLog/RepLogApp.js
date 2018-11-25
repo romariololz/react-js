@@ -1,12 +1,16 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-export default class RepLogApp extends Component{
+export default class RepLogApp extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            highlightedRowId: null,
+            highlightedRowId: null
         };
+    }
+
+    handleRowClick(repLogId, event) {
+        this.setState({highlightedRowId: repLogId});
     }
 
     render() {
@@ -18,8 +22,6 @@ export default class RepLogApp extends Component{
             heart = <span>❤️</span>;
         }
 
-
-
         const repLogs = [
             { id: 1, reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5 },
             { id: 2, reps: 10, itemLabel: 'Big Fat Cat', totalWeightLifted: 180 },
@@ -28,7 +30,7 @@ export default class RepLogApp extends Component{
 
         return (
             <div className="col-md-7">
-                <h2>Lift History! {heart}</h2>
+                <h2>Lift Stuff! {heart}</h2>
 
                 <table className="table table-striped">
                     <thead>
@@ -44,11 +46,12 @@ export default class RepLogApp extends Component{
                         <tr
                             key={repLog.id}
                             className={highlightedRowId === repLog.id ? 'info' : ''}
+                            onClick={(event) => this.handleRowClick(repLog.id, event)}
                         >
-                        <td>{repLog.itemLabel}</td>
-                        <td>{repLog.reps}</td>
-                        <td>{repLog.totalWeightLifted}</td>
-                        <td>...</td>
+                            <td>{repLog.itemLabel}</td>
+                            <td>{repLog.reps}</td>
+                            <td>{repLog.totalWeightLifted}</td>
+                            <td>...</td>
                         </tr>
                     ))}
                     </tbody>
@@ -64,14 +67,17 @@ export default class RepLogApp extends Component{
 
                 <form className="form-inline">
                     <div className="form-group">
-                        <label className="sr-only control-label required" htmlFor="rep_log_item">
+                        <label className="sr-only control-label required"
+                               htmlFor="rep_log_item">
                             What did you lift?
                         </label>
                         <select id="rep_log_item"
                                 name="item"
                                 required="required"
                                 className="form-control">
-                            <option value="" selected="selected">What did you lift?</option>
+                            <option value="">What did you
+                                lift?
+                            </option>
                             <option value="cat">Cat</option>
                             <option value="fat_cat">Big Fat Cat</option>
                             <option value="laptop">My Laptop</option>
@@ -80,7 +86,8 @@ export default class RepLogApp extends Component{
                     </div>
                     {' '}
                     <div className="form-group">
-                        <label className="sr-only control-label required" htmlFor="rep_log_reps">
+                        <label className="sr-only control-label required"
+                               htmlFor="rep_log_reps">
                             How many times?
                         </label>
                         <input type="number" id="rep_log_reps"
@@ -89,9 +96,12 @@ export default class RepLogApp extends Component{
                                className="form-control"/>
                     </div>
                     {' '}
-                    <button type="submit" className="btn btn-primary">I Lifted it!</button>
+                    <button type="submit" className="btn btn-primary">I Lifted
+                        it!
+                    </button>
                 </form>
             </div>
+
         );
     }
 }
