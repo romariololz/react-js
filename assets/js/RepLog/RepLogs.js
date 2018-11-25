@@ -1,11 +1,11 @@
 import React from 'react';
+import RepLogList from './RepLogList';
 import PropTypes from 'prop-types';
-import RepLogList from "./RepLogList";
 
 export default function RepLogs(props) {
-    const { withHeart, highlightedRowId, onRowClick } = props;
-
+    const { withHeart, highlightedRowId, onRowClick, repLogs } = props;
     let heart = '';
+
     if (withHeart) {
         heart = <span>❤️</span>;
     }
@@ -13,7 +13,6 @@ export default function RepLogs(props) {
     return (
         <div className="col-md-7">
             <h2>Lift Stuff! {heart}</h2>
-
             <table className="table table-striped">
                 <thead>
                 <tr>
@@ -26,6 +25,7 @@ export default function RepLogs(props) {
                 <RepLogList
                     highlightedRowId={highlightedRowId}
                     onRowClick={onRowClick}
+                    repLogs={repLogs}
                 />
                 <tfoot>
                 <tr>
@@ -36,7 +36,6 @@ export default function RepLogs(props) {
                 </tr>
                 </tfoot>
             </table>
-
             <form className="form-inline">
                 <div className="form-group">
                     <label className="sr-only control-label required"
@@ -73,12 +72,12 @@ export default function RepLogs(props) {
                 </button>
             </form>
         </div>
-
     );
 }
 
-RepLogs.PropTypes = {
+RepLogs.propTypes = {
     withHeart: PropTypes.bool,
     highlightedRowId: PropTypes.any,
-    onRowClick: PropTypes.func.isRequired
+    onRowClick: PropTypes.func.isRequired,
+    repLogs: PropTypes.array.isRequired
 };
