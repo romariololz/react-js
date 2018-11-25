@@ -8,9 +8,11 @@ export default class RepLogApp extends Component {
         this.state = {
             highlightedRowId: null
         };
+
+        this.handleRowClick = this.handleRowClick.bind(this);
     }
 
-    handleRowClick(repLogId, event) {
+    handleRowClick(repLogId) {
         this.setState({highlightedRowId: repLogId});
     }
 
@@ -36,7 +38,10 @@ export default class RepLogApp extends Component {
                         <th>&nbsp;</th>
                     </tr>
                     </thead>
-                    <RepLogList highlightedRowId={highlightedRowId} />
+                    <RepLogList
+                        highlightedRowId={highlightedRowId}
+                        onRowClick={this.handleRowClick}
+                    />
                     <tfoot>
                     <tr>
                         <td>&nbsp;</td>
