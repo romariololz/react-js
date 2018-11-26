@@ -29,10 +29,6 @@ export default class RepLogCreator extends Component {
         const quantityInput = this.quantityInput.current;
         const itemSelect = this.itemSelect.current;
 
-        console.log('I love when a good form submits!');
-        console.log(quantityInput.value);
-        console.log(itemSelect.options[itemSelect.selectedIndex].value);
-
         if (quantityInput.value <= 0) {
             this.setState({
                 quantityInputError: 'Please enter a value greater than 0'
