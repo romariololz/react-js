@@ -27,7 +27,8 @@ export default function RepLogs(props) {
         isLoaded,
         isSavingNewRepLog,
         successMessage,
-        newRepLogValidationErrorMessage
+        newRepLogValidationErrorMessage,
+        itemOptions
     } = props;
     let heart = '';
 
@@ -85,6 +86,7 @@ export default function RepLogs(props) {
                     <RepLogCreator
                         onAddRepLog={onAddRepLog}
                         validationErrorMessage={newRepLogValidationErrorMessage}
+                        itemOptions={itemOptions}
                     />
                 </div>
             </div>
@@ -105,4 +107,5 @@ RepLogs.propTypes = {
     isSavingNewRepLog: PropTypes.bool.isRequired,
     successMessage: PropTypes.string.isRequired,
     newRepLogValidationErrorMessage: PropTypes.string.isRequired,
+    itemOptions: PropTypes.array.isRequired,
 };
