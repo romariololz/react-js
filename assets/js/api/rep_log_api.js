@@ -1,6 +1,15 @@
 function fetchJson(url, options) {
+    let headers = { 'Content-type': 'application/json' };
+
+    if (options && options.headers) {
+        headers = {...options.headers, headers}
+
+        delete options.headers;
+    }
+
     return fetch(url, Object.assign({
-        credentials: 'same-origin'
+        credentials: 'same-origin',
+        headers: headers
     }, options))
         .then(checkStatus)
         .then(response => {
