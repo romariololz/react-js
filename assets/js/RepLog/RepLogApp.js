@@ -71,7 +71,7 @@ export default class RepLogApp extends Component {
 
                     return {
                         ...newState,
-                        isSavingNewRepLog: false,
+                        repLogs: newRepLogs,
                         newRepLogValidationErrorMessage: '',
                     };
                 });
